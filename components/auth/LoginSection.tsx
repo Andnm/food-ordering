@@ -189,7 +189,7 @@ const LoginSection: React.FC = () => {
               onClick={() => router.push("/register")}
               className="font-normal"
             >
-              Let's register an account
+              Lets register an account
             </span>
           </p>
         </div>
