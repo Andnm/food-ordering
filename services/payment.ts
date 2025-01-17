@@ -1,10 +1,10 @@
-import { PaymentState } from "@models/payment";
+import { CreatePaymentState } from "@models/payment";
 import apiLinks from "@utils/api-links";
 import httpClient from "@utils/http-client";
 
 const createPaymentLink = async (
   token: string,
-  model: PaymentState
+  model: CreatePaymentState
 ): Promise<any> => {
   const response = await httpClient.post({
     url: `${apiLinks.payment.createPaymentLink}`,

@@ -21,7 +21,7 @@ export interface OrderInfo extends OrderState {
   details?: OrderItem[];
 }
 
-interface OrderItem {
+export interface OrderItem {
   item_id: number;
   item_name: string;
   quantity: number;

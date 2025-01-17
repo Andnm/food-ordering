@@ -193,7 +193,6 @@ const OrderManagement = () => {
         setIsLoading(true);
         try {
           const response = await order.getListOrderByAdmin(session.user.token);
-          console.log("response: ", response);
           setOriginalData(response);
           setProcessingData(response);
         } catch (error: any) {

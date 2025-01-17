@@ -51,7 +51,7 @@ const LoginSection: React.FC = () => {
         if (session?.user?.role_id === 1) {
           return router.push("/account");
         } else if (session?.user?.role_id === 0) {
-          return router.push("/admin/user");
+          return router.push("/admin/manage-user");
         }
       }
     } catch (error) {

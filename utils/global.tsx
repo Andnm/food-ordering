@@ -27,19 +27,19 @@ export const sliderMenu = [
   //   roles: [ROLE_ADMIN, ROLE_USER],
   // },
   {
-    key: "admin/user",
+    key: "admin/manage-user",
     icon: <BiSolidUserAccount />,
     label: "User",
-    roles: [ROLE_USER, ROLE_ADMIN],
+    roles: [ROLE_ADMIN],
   },
   {
-    key: "admin/order",
+    key: "admin/manage-order",
     icon: <MdOutlineRequestPage />,
     label: "Order",
     roles: [ROLE_ADMIN],
   },
   {
-    key: "admin/item",
+    key: "admin/manage-item",
     icon: <MdOutlineFastfood  />,
     label: "Item",
     roles: [ROLE_ADMIN],

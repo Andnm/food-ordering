@@ -22,3 +22,7 @@ export const NAV_ITEMS_GENERAL = [
   },
 ];
 
+export enum NotificationEnum {
+  TO_ADMIN = 'TO_ADMIN',
+  TO_USER = 'TO_USER'
+}

@@ -27,8 +27,17 @@ const apiLinks = {
     updateCancelStatus: `${urlServerSide}/order/change-order-to-cancel`,
   },
   payment: {
-    createPaymentLink: `${urlServerSide}/payment/create-payment-link`
-  }
+    createPaymentLink: `${urlServerSide}/payment/create-payment-link`,
+  },
+  invoice: {
+    getAllInvoices: `${urlServerSide}/invoice/invoices`,
+  },
+  notification: {
+    getAllNotifications: `${urlServerSide}/notification/get-all-notifications`,
+    createNotification: `${urlServerSide}/notification/create-notification`,
+    markAllAsSeen: `${urlServerSide}/notification/mark-all-as-seen`,
+    markSeenOne: `${urlServerSide}/notification/update-notification`,
+  },
 };
 
 export default apiLinks;

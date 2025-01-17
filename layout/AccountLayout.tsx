@@ -26,7 +26,7 @@ const AccountLayout = ({ children }: AccountLayoutProps) => {
         <div className="container account-page">
           <div className="flex h-fit ">
             <AccountSidebar />
-            <div className="flex-1 p-8">
+            <div className="flex-1 px-8">
               {children}
             </div>
           </div>

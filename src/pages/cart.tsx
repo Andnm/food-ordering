@@ -19,7 +19,11 @@ import useSelector from "@hooks/use-selector";
 import useDispatch from "@hooks/use-dispatch";
 import { toast } from "react-toastify";
 import payment from "@services/payment";
-import { PaymentState } from "@models/payment";
+import { CreatePaymentState } from "@models/payment";
+import { toastError } from "@utils/global";
+import notification from "@services/notification";
+import { CreateNotiState } from "@models/notification";
+import { NotificationEnum } from "@utils/constants";
 
 const HomeLayoutNoSSR = dynamic(() => import("@layout/HomeLayout"), {
   ssr: false,
@@ -67,14 +71,12 @@ const CartPage: React.FC = () => {
         localStorage.setItem("token", session.user.token);
       }
 
-      const data: PaymentState = {
+      const data: CreatePaymentState = {
         total: total,
         user_id: orderData.user_id,
         note: orderData.note,
         details: orderData.details,
       };
-
-      console.log("data: ", data)
 
       const responseCreate = await payment.createPaymentLink(session?.user?.token!, data);
 
@@ -84,12 +86,12 @@ const CartPage: React.FC = () => {
       
       // await order.createOrder(session?.user?.token!, orderData);
 
-      // dispatch(clearCart());
+      dispatch(clearCart());
 
       toast.success("Order created successfully!");
       // router.push("/account/orders");
     } catch (error: any) {
-      message.error(error?.response?.data?.message || "Failed to create order");
+      toastError(error);
       console.error("Checkout error:", error);
     } finally {
       setIsCheckingOut(false);

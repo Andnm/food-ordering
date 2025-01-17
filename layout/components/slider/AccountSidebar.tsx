@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaUser, FaShoppingBag } from "react-icons/fa";
+import { FaUser, FaShoppingBag, FaFileInvoiceDollar } from "react-icons/fa";
 import useSelector from "@hooks/use-selector";
 import { generateFallbackAvatar } from "@utils/helpers";
 
@@ -11,7 +11,8 @@ const AccountSidebar = () => {
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
-  const isProfileSection = pathname === '/account' || pathname === '/account/change-password';
+  const isProfileSection =
+    pathname === "/account" || pathname === "/account/change-password";
 
   return (
     <div className="w-64 bg-white shadow-md">
@@ -40,18 +41,26 @@ const AccountSidebar = () => {
       <nav className="py-4 menu-account">
         <ul className="">
           <li className="group">
-            <div 
+            <div
               className={`flex items-center justify-between p-3 mx-2 rounded-lg cursor-pointer transition-all duration-200 ${
-                isProfileSection ? 'bg-gray-100 text-blue-600' : 'hover:bg-gray-50'
+                isProfileSection
+                  ? "bg-gray-100 text-blue-600"
+                  : "hover:bg-gray-50"
               }`}
               onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
             >
               <div className="flex items-center space-x-3">
-                <FaUser className={`text-lg ${isProfileSection ? 'text-blue-600' : 'text-gray-600'}`} />
+                <FaUser
+                  className={`text-lg ${
+                    isProfileSection ? "text-blue-600" : "text-gray-600"
+                  }`}
+                />
                 <span className="font-medium">My Account</span>
               </div>
               <svg
-                className={`w-5 h-5 transition-transform duration-200 ${isProfileMenuOpen ? 'rotate-180' : ''}`}
+                className={`w-5 h-5 transition-transform duration-200 ${
+                  isProfileMenuOpen ? "rotate-180" : ""
+                }`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -67,24 +76,24 @@ const AccountSidebar = () => {
             {isProfileMenuOpen && (
               <ul className="mt-1 space-y-1">
                 <li>
-                  <Link 
-                    href="/account" 
+                  <Link
+                    href="/account"
                     className={`block py-2 px-10 mx-2 rounded-lg transition-all duration-200 ${
-                      isActive('/account')
-                        ? 'text-blue-600 bg-gray-50'
-                        : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+                      isActive("/account")
+                        ? "text-blue-600 bg-gray-50"
+                        : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
                     }`}
                   >
                     Profile
                   </Link>
                 </li>
                 <li>
-                  <Link 
-                    href="/account/change-password" 
+                  <Link
+                    href="/account/change-password"
                     className={`block py-2 px-10 mx-2 rounded-lg transition-all duration-200 ${
-                      isActive('/account/change-password')
-                        ? 'text-blue-600 bg-gray-50'
-                        : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+                      isActive("/account/change-password")
+                        ? "text-blue-600 bg-gray-50"
+                        : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
                     }`}
                   >
                     Change Password
@@ -94,18 +103,42 @@ const AccountSidebar = () => {
             )}
           </li>
           <li>
-            <Link 
-              href="/account/orders" 
+            <Link
+              href="/account/orders"
               className={`flex items-center space-x-3 p-3 mx-2 rounded-lg transition-all duration-200 ${
-                isActive('/account/orders')
-                  ? 'text-blue-600 bg-gray-50'
-                  : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+                isActive("/account/orders")
+                  ? "text-blue-600 bg-gray-50"
+                  : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
               }`}
             >
-              <FaShoppingBag className={`text-lg ${
-                isActive('/account/orders') ? 'text-blue-600' : 'text-gray-600'
-              }`} />
+              <FaShoppingBag
+                className={`text-lg ${
+                  isActive("/account/orders")
+                    ? "text-blue-600"
+                    : "text-gray-600"
+                }`}
+              />
               <span className="font-medium">My Orders</span>
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              href="/account/invoices"
+              className={`flex items-center space-x-3 p-3 mx-2 rounded-lg transition-all duration-200 ${
+                isActive("/account/invoices")
+                  ? "text-blue-600 bg-gray-50"
+                  : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
+              }`}
+            >
+              <FaFileInvoiceDollar
+                className={`text-lg ${
+                  isActive("/account/invoices")
+                    ? "text-blue-600"
+                    : "text-gray-600"
+                }`}
+              />
+              <span className="font-medium">My Invoices</span>
             </Link>
           </li>
         </ul>

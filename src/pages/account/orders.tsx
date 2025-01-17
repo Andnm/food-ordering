@@ -8,6 +8,10 @@ import { formatCurrencyToVND, formatDateTimeVN } from "@utils/helpers";
 import { toastError } from "@utils/global";
 import { OrderInfo } from "@models/order";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import { CreateNotiState } from "@models/notification";
+import { NotificationEnum } from "@utils/constants";
+import notification from "@services/notification";
 
 const { TabPane } = Tabs;
 
@@ -28,6 +32,8 @@ const ORDER_STATUS_LABELS = {
 
 const OrderPage = () => {
   const { data: session } = useSession();
+  const router = useRouter();
+
   const [activeTab, setActiveTab] = useState<string>("all");
   const [orders, setOrders] = useState<OrderInfo[]>([]);
   const [loading, setLoading] = useState(true);
@@ -37,7 +43,7 @@ const OrderPage = () => {
     if (session?.user?.token) {
       fetchOrders();
     }
-  }, [session?.user?.token]);
+  }, [session?.user?.token, router.asPath]);
 
   const fetchOrders = async () => {
     if (!session?.user?.token) return;
@@ -45,7 +51,6 @@ const OrderPage = () => {
     try {
       setLoading(true);
       const ordersList = await order.getListOrderByUser(session?.user?.token);
-      console.log("ordersList: ", ordersList);
 
       setOrders(ordersList);
     } catch (error) {
